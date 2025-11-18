@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>MSC-112 – Science or Technology Quiz (Random)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 16px;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+    h1, h2 {
+      margin: 8px 0;
+    }
+    .card {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #020617;
+      border-radius: 12px;
+      padding: 16px 20px 20px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+      border: 1px solid #1f2937;
+    }
+    .meta {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin-bottom: 12px;
+    }
+    .question {
+      margin-bottom: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #020617;
+      border: 1px solid #1f2937;
+    }
+    .question-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .options label {
+      margin-right: 18px;
+      cursor: pointer;
+    }
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      margin-right: 8px;
+      margin-top: 8px;
+    }
+    #btn-check {
+      background: #22c55e;
+      color: #022c22;
+      font-weight: 600;
+    }
+    #btn-new {
+      background: #e5e7eb;
+      color: #111827;
+      font-weight: 500;
+    }
+    #result {
+      margin-top: 10px;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .tagline {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-top: 4px;
+    }
+    .footer-note {
+      margin-top: 14px;
+      font-size: 0.82rem;
+      color: #9ca3af;
+    }
+    .correct {
+      border-color: #22c55e !important;
+    }
+    .incorrect {
+      border-color: #ef4444 !important;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      background: #1d283a;
+      color: #a5b4fc;
+      margin-left: 4px;
+    }
+    .hint {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Science or Technology?</h1>
+    <div class="meta">
+      MSC-112 • Week 1 – บทนำสู่วิทยาศาสตร์และเทคโนโลยี
+      <span class="badge">Random 10 Q</span>
+    </div>
+    <p class="tagline">
+      เลือกให้ถูกว่าแต่ละรายการคือ <b>Science (วิทยาศาสตร์)</b> หรือ <b>Technology (เทคโนโลยี)</b> แล้วกดตรวจคะแนน จากนั้นแคปหน้าจอส่งอาจารย์
+    </p>
+
+    <div id="questions-container"></div>
+
+    <button id="btn-check">ตรวจคะแนน</button>
+    <button id="btn-new">สุ่มชุดใหม่</button>
+
+    <div id="result"></div>
+
+    <div class="footer-note">
+      คีย์เวิร์ด: Science = กระบวนการ/ปรากฏการณ์ตามธรรมชาติ • Technology = สิ่งประดิษฐ์/อุปกรณ์/ระบบที่มนุษย์ออกแบบ
+    </div>
+  </div>
+
+  <script>
+    // คลังคำถาม: type = "Science" หรือ "Technology"
+    const QUESTION_BANK = [
+      // Science – ปรากฏการณ์ / กระบวนการธรรมชาติ
+      { text: "น้ำแข็งละลาย", type: "Science" },
+      { text: "ปรากฏการณ์สายรุ้ง", type: "Science" },
+      { text: "การเดือดของน้ำ", type: "Science" },
+      { text: "การเกิดเงา", type: "Science" },
+      { text: "ลมทะเล–ลมบก", type: "Science" },
+      { text: "การสังเกตดาวบนท้องฟ้า", type: "Science" },
+      { text: "การสังเคราะห์แสงของพืช", type: "Science" },
+      { text: "ความดันอากาศ", type: "Science" },
+      { text: "การเน่าเสียของอาหาร", type: "Science" },
+      { text: "เสียงฟ้าร้อง", type: "Science" },
+      { text: "ปฏิกิริยาการขึ้นฟองของโซดา", type: "Science" },
+      { text: "การละลายของเกลือในน้ำ", type: "Science" },
+      { text: "ปรากฏการณ์น้ำค้าง", type: "Science" },
+      { text: "ดอกไม้เหี่ยวเพราะขาดน้ำ", type: "Science" },
+      { text: "ปรากฏการณ์ฟองเบียร์", type: "Science" },
+      { text: "การกลายเป็นไอน้ำของน้ำร้อน", type: "Science" },
+      { text: "แรงเสียดทานเมื่อถูมือ", type: "Science" },
+      { text: "การเกิดน้ำค้างแข็ง", type: "Science" },
+      { text: "การเกิดไฟฟ้าสถิตบนเสื้อผ้า", type: "Science" },
+      { text: "การงอกของเมล็ดพืช", type: "Science" },
+      { text: "การละลายของเทียนเมื่อโดนร้อน", type: "Science" },
+      { text: "ปรากฏการณ์ดวงจันทร์เต็มดวง", type: "Science" },
+
+      // Technology – สิ่งที่มนุษย์ประดิษฐ์/ออกแบบ
+      { text: "ไมโครเวฟอุ่นอาหาร", type: "Technology" },
+      { text: "เตารีดไอน้ำ", type: "Technology" },
+      { text: "หูฟังไร้สาย", type: "Technology" },
+      { text: "โทรศัพท์มือถือ", type: "Technology" },
+      { text: "เครื่องฟอกอากาศ", type: "Technology" },
+      { text: "เครื่องซักผ้า", type: "Technology" },
+      { text: "รถยนต์ไฟฟ้า (EV)", type: "Technology" },
+      { text: "กล้อง CCTV", type: "Technology" },
+      { text: "โดรนถ่ายภาพ", type: "Technology" },
+      { text: "แผนที่ Google Maps (บนมือถือ)", type: "Technology" },
+      { text: "เครื่องปรับอากาศ (แอร์)", type: "Technology" },
+      { text: "บัตรแตะเข้าอาคาร (RFID)", type: "Technology" },
+      { text: "เราเตอร์ Wi-Fi", type: "Technology" },
+      { text: "สมาร์ตวอทช์ (Smartwatch)", type: "Technology" },
+      { text: "หุ่นยนต์ดูดฝุ่น", type: "Technology" },
+      { text: "เครื่องปริ้นเตอร์ (Printer)", type: "Technology" },
+      { text: "ลิฟต์โดยสาร", type: "Technology" },
+      { text: "เตาปิ้งขนมปัง", type: "Technology" },
+      { text: "หลอดไฟ LED", type: "Technology" },
+      { text: "สมาร์ตทีวี (Smart TV)", type: "Technology" },
+      { text: "พาวเวอร์แบงก์ (Power Bank)", type: "Technology" },
+      { text: "โดรนส่งของ", type: "Technology" },
+      { text: "เครื่องวัดออกซิเจนปลายนิ้ว (Oximeter)", type: "Technology" }
+    ];
+
+    let currentQuestions = [];
+
+    function shuffle(array) {
+      const arr = array.slice();
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function pickRandomQuestions(num) {
+      const shuffled = shuffle(QUESTION_BANK);
+      return shuffled.slice(0, num);
+    }
+
+    function renderQuestions() {
+      const container = document.getElementById("questions-container");
+      container.innerHTML = "";
+      document.getElementById("result").textContent = "";
+
+      currentQuestions = pickRandomQuestions(10);
+
+      currentQuestions.forEach((q, index) => {
+        const qDiv = document.createElement("div");
+        qDiv.className = "question";
+        qDiv.id = `q-${index}`;
+
+        const title = document.createElement("div");
+        title.className = "question-title";
+        title.textContent = `${index + 1}. ${q.text}`;
+
+        const optionsDiv = document.createElement("div");
+        optionsDiv.className = "options";
+
+        const scienceId = `q${index}-science`;
+        const techId = `q${index}-tech`;
+
+        optionsDiv.innerHTML = `
+          <label>
+            <input type="radio" name="q${index}" value="Science" id="${scienceId}">
+            Science (วิทยาศาสตร์)
+          </label>
+          <label>
+            <input type="radio" name="q${index}" value="Technology" id="${techId}">
+            Technology (เทคโนโลยี)
+          </label>
+          <div class="hint">เลือกให้ตรงตามนิยามในคลาส: Science = ปรากฏการณ์/กระบวนการ • Technology = สิ่งประดิษฐ์/อุปกรณ์</div>
+        `;
+
+        qDiv.appendChild(title);
+        qDiv.appendChild(optionsDiv);
+        container.appendChild(qDiv);
+      });
+    }
+
+    function checkAnswers() {
+      let score = 0;
+      const total = currentQuestions.length;
+
+      currentQuestions.forEach((q, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const qDiv = document.getElementById(`q-${index}`);
+        qDiv.classList.remove("correct", "incorrect");
+
+        if (!selected) {
+          // ไม่ตอบ = ผิด
+          qDiv.classList.add("incorrect");
+          return;
+        }
+
+        if (selected.value === q.type) {
+          score++;
+          qDiv.classList.add("correct");
+        } else {
+          qDiv.classList.add("incorrect");
+        }
+      });
+
+      const resultDiv = document.getElementById("result");
+      resultDiv.textContent = `คะแนนของคุณ: ${score} / ${total}  ✅ แคปหน้าจอนี้ส่งอาจารย์ได้เลย`;
+    }
+
+    document.getElementById("btn-check").addEventListener("click", checkAnswers);
+    document.getElementById("btn-new").addEventListener("click", renderQuestions);
+
+    // เริ่มต้นด้วยชุดสุ่มทันทีเมื่อโหลดหน้า
+    renderQuestions();
+  </script>
+</body>
+</html>
