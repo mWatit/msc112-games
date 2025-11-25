@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>MSC-112 – แบบฝึกหัดวิเคราะห์ STS (4 คำถาม / 50 หัวข้อ / PDF)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      color-scheme: light dark;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+    h1, h2, h3 {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      font-size: 14px;
+      margin: 8px 0 4px;
+    }
+    input, textarea, select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      font-family: inherit;
+    }
+    textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+      margin-right: 8px;
+    }
+    .btn-primary {
+      background: #2563eb;
+      color: #fff;
+    }
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #111827;
+    }
+    .btn:active {
+      transform: scale(0.97);
+    }
+    .hint {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+    .error {
+      color: #b91c1c;
+      font-size: 13px;
+      margin-top: 6px;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 16px 0;
+    }
+
+    #exportArea {
+      background: #ffffff;
+      color: #111827;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 0 0 1px #e5e7eb;
+      max-width: 800px;
+      margin: 0 auto 16px auto;
+    }
+    #exportArea h2 {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .export-line {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+    .export-label {
+      font-weight: 600;
+    }
+    .export-answer {
+      margin-bottom: 10px;
+      white-space: pre-wrap;
+      font-size: 14px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body { background: #020617; }
+      .card { background:#0f172a; color:#e5e7eb; }
+      input, textarea, select { background:#020617; color:#e5e7eb; border-color:#475569; }
+      .hint { color:#9ca3af; }
+      #exportArea { background:#ffffff; color:#111827; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <section class="card">
+    <h1>MSC-112 – แบบฝึกหัดวิเคราะห์ STS (4 คำถาม / 50 หัวข้อ / PDF)</h1>
+    <p>เลือกหัวข้อจากลิสต์ 50 หัวข้อ → ตอบคำถาม 4 ข้อ → อัปเดตตัวอย่างเอกสาร → ดาวน์โหลด PDF ส่งใน Teams</p>
+  </section>
+
+  <section class="card">
+    <h2>ข้อมูลนักศึกษา + เลือกหัวข้อ</h2>
+
+    <label>ชื่อ–นามสกุล</label>
+    <input type="text" id="studentName">
+
+    <label>รหัสนักศึกษา</label>
+    <input type="text" id="studentId">
+
+    <label>Section</label>
+    <select id="studentSec">
+      <option value="">-- เลือก Section --</option>
+      <option value="Sec01">Sec01</option>
+      <option value="Sec02">Sec02</option>
+      <option value="Sec03">Sec03</option>
+    </select>
+
+    <label>หัวข้อเทคโนโลยีที่เลือก (เลือกจากลิสต์ 50 หัวข้อ)</label>
+    <select id="topicTitle">
+      <option value="">-- เลือกหัวข้อ --</option>
+      <!-- ชีวิตมหาวิทยาลัย -->
+      <option value="เช็กชื่อด้วย QR Code ในคาบ">เช็กชื่อด้วย QR Code ในคาบ</option>
+      <option value="Wi-Fi มหา’ลัยต้อง Login">Wi-Fi มหา’ลัยต้อง Login</option>
+      <option value="ส่งงานใน Microsoft Teams">ส่งงานใน Microsoft Teams</option>
+      <option value="การใช้ ChatGPT ทำรายงาน">การใช้ ChatGPT ทำรายงาน</option>
+      <option value="กล้องวงจรปิดในตึกเรียน">กล้องวงจรปิดในตึกเรียน</option>
+      <option value="ระบบจองห้องออนไลน์">ระบบจองห้องออนไลน์</option>
+      <option value="ระบบสแกนเข้า–ออกหอพัก">ระบบสแกนเข้า–ออกหอพัก</option>
+      <option value="การเรียนออนไลน์/ย้อนหลัง">การเรียนออนไลน์/ย้อนหลัง</option>
+
+      <!-- โซเชียล / คอนเทนต์ -->
+      <option value="TikTok FYP ดันคลิป">TikTok FYP ดันคลิป</option>
+      <option value="IG Reels ทำคลิปซ้ำ ๆ">IG Reels ทำคลิปซ้ำ ๆ</option>
+      <option value="YouTube แนะนำคลิป">YouTube แนะนำคลิป</option>
+      <option value="ฟิลเตอร์หน้าเนียน IG">ฟิลเตอร์หน้าเนียน IG</option>
+      <option value="TikTok Shop Live">TikTok Shop Live</option>
+      <option value="โพสต์ IG ไม่ค่อยมีคนเห็น">โพสต์ IG ไม่ค่อยมีคนเห็น</option>
+      <option value="Page ข่าวปลอมแชร์เร็ว">Page ข่าวปลอมแชร์เร็ว</option>
+      <option value="Meme กลายเป็นไวรัล">Meme กลายเป็นไวรัล</option>
+      <option value="CapCut Template ทำคอนเทนต์อัตโนมัติ">CapCut Template ทำคอนเทนต์อัตโนมัติ</option>
+      <option value="ปุ่ม Like/Share ที่ชวนเสพติด">ปุ่ม Like/Share ที่ชวนเสพติด</option>
+      <option value="คนดังใช้ AI ทำรูปแทนตัวจริง">คนดังใช้ AI ทำรูปแทนตัวจริง</option>
+      <option value="การทำคอนเทนต์ Clickbait">การทำคอนเทนต์ Clickbait</option>
+
+      <!-- เกม -->
+      <option value="กาชา (Gacha) ในเกม">กาชา (Gacha) ในเกม</option>
+      <option value="Pay-to-win เติมเงินผ่านด่าน">Pay-to-win เติมเงินผ่านด่าน</option>
+      <option value="ระบบ Ranking / MMR">ระบบ Ranking / MMR</option>
+      <option value="Toxic Chat ในเกม">Toxic Chat ในเกม</option>
+      <option value="เกมมือถือบังคับดูโฆษณา">เกมมือถือบังคับดูโฆษณา</option>
+      <option value="Loot Box โอกาสสุ่มไม่โปร่งใส">Loot Box โอกาสสุ่มไม่โปร่งใส</option>
+      <option value="Roblox ให้เด็กสร้างเกม">Roblox ให้เด็กสร้างเกม</option>
+      <option value="การแบนผู้เล่นด้วย AI">การแบนผู้เล่นด้วย AI</option>
+      <option value="เกมที่เก็บข้อมูลผู้เล่นจำนวนมาก">เกมที่เก็บข้อมูลผู้เล่นจำนวนมาก</option>
+      <option value="การ Stream เกมบน TikTok">การ Stream เกมบน TikTok</option>
+      <option value="ระบบสกิน/อวาตาร์ต้องซื้อ">ระบบสกิน/อวาตาร์ต้องซื้อ</option>
+      <option value="เกมออนไลน์เซิร์ฟเวอร์ล่ม">เกมออนไลน์เซิร์ฟเวอร์ล่ม</option>
+
+      <!-- สตรีมมิ่ง -->
+      <option value="Netflix แนะนำหนังตามประวัติ">Netflix แนะนำหนังตามประวัติ</option>
+      <option value="Disney+ บล็อกบางเนื้อหา">Disney+ บล็อกบางเนื้อหา</option>
+      <option value="Auto-play ทำให้ดูยาวต่อเนื่อง">Auto-play ทำให้ดูยาวต่อเนื่อง</option>
+      <option value="ระบบ Top 10 Netflix">ระบบ Top 10 Netflix</option>
+      <option value="แพ็กเกจ 4K ราคาแพงกว่า">แพ็กเกจ 4K ราคาแพงกว่า</option>
+      <option value="การแชร์บัญชี Netflix">การแชร์บัญชี Netflix</option>
+      <option value="YouTube Premium ตัดโฆษณา">YouTube Premium ตัดโฆษณา</option>
+      <option value="การบล็อกโฆษณา Ad-block">การบล็อกโฆษณา Ad-block</option>
+
+      <!-- ชีวิตประจำวัน -->
+      <option value="PromptPay / QR Payment">PromptPay / QR Payment</option>
+      <option value="ให้ทิปไรเดอร์ในแอป">ให้ทิปไรเดอร์ในแอป</option>
+      <option value="Grab/Foodpanda ค่าส่งขึ้นตามเวลา">Grab/Foodpanda ค่าส่งขึ้นตามเวลา</option>
+      <option value="Google Maps พาหลง">Google Maps พาหลง</option>
+      <option value="Shopee ดันร้านจีนราคาถูก">Shopee ดันร้านจีนราคาถูก</option>
+      <option value="ร้านกาแฟสะสมแต้มในแอป">ร้านกาแฟสะสมแต้มในแอป</option>
+      <option value="ระบบจองคิวร้านดังในแอป">ระบบจองคิวร้านดังในแอป</option>
+
+      <!-- ความเป็นส่วนตัว / ข้อมูล -->
+      <option value="Cookies ที่ตามติดการใช้งาน">Cookies ที่ตามติดการใช้งาน</option>
+      <option value="โฆษณา Targeting ตามพฤติกรรม">โฆษณา Targeting ตามพฤติกรรม</option>
+      <option value="OTP ที่ต้องใช้ทุกครั้ง">OTP ที่ต้องใช้ทุกครั้ง</option>
+      <option value="AI คัดกรองใบสมัครงาน">AI คัดกรองใบสมัครงาน</option>
+    </select>
+
+    <hr />
+
+    <h2>คำถามเชิงวิพากษ์ (STS)</h2>
+
+    <label>1) ใครเป็นคนตัดสินใจให้พัฒนาเทคโนโลยีนี้ขึ้นมา / เขาต้องการอะไร?</label>
+    <textarea id="q1"></textarea>
+
+    <label>2) ใครได้ประโยชน์มากที่สุด และใครอาจเสียประโยชน์จากเทคโนโลยีนี้?</label>
+    <textarea id="q2"></textarea>
+
+    <label>3) เทคโนโลยีนี้เข้ามาเสริมอำนาจของคนกลุ่มเดิม หรือเข้ามาท้าทายโครงสร้างอำนาจเก่า อย่างไร?</label>
+    <textarea id="q3"></textarea>
+
+    <label>4) เราในฐานะสมาชิกสังคม จะเข้าไปมีส่วนร่วมในการกำหนดทิศทาง/กติกาของเทคโนโลยีนี้ได้อย่างไร?</label>
+    <textarea id="q4"></textarea>
+
+    <div id="errorBox" class="error" style="display:none;"></div>
+
+    <button class="btn btn-secondary" type="button" onclick="updatePreview()">
+      🔄 อัปเดตตัวอย่างเอกสารด้านล่าง
+    </button>
+    <p class="hint">กดปุ่มนี้ก่อน แล้วค่อยดาวน์โหลด PDF</p>
+  </section>
+
+  <section class="card">
+    <h2>ตัวอย่างเอกสารที่จะถูกบันทึกเป็น PDF</h2>
+
+    <div id="exportArea">
+      <h2>MSC-112 – แบบฝึกหัดวิเคราะห์ STS</h2>
+
+      <div class="export-line"><span class="export-label">ชื่อ–นามสกุล:</span> <span id="outName">-</span></div>
+      <div class="export-line"><span class="export-label">รหัสนักศึกษา:</span> <span id="outId">-</span></div>
+      <div class="export-line"><span class="export-label">Section:</span> <span id="outSec">-</span></div>
+      <div class="export-line"><span class="export-label">หัวข้อเทคโนโลยีที่เลือก:</span> <span id="outTopic">-</span></div>
+
+      <hr>
+
+      <div class="export-answer">
+        <span class="export-label">1) ใครเป็นคนตัดสินใจให้พัฒนาเทคโนโลยีนี้ขึ้นมา / เขาต้องการอะไร?</span><br>
+        <span id="outQ1">-</span>
+      </div>
+
+      <div class="export-answer">
+        <span class="export-label">2) ใครได้ประโยชน์มากที่สุด และใครอาจเสียประโยชน์จากเทคโนโลยีนี้?</span><br>
+        <span id="outQ2">-</span>
+      </div>
+
+      <div class="export-answer">
+        <span class="export-label">3) เทคโนโลยีนี้เข้ามาเสริมอำนาจของคนกลุ่มเดิม หรือเข้ามาท้าทายโครงสร้างอำนาจเก่า อย่างไร?</span><br>
+        <span id="outQ3">-</span>
+      </div>
+
+      <div class="export-answer">
+        <span class="export-label">4) เราในฐานะสมาชิกสังคม จะเข้าไปมีส่วนร่วมในการกำหนดทิศทาง/กติกาของเทคโนโลยีนี้ได้อย่างไร?</span><br>
+        <span id="outQ4">-</span>
+      </div>
+
+    </div>
+
+    <button class="btn btn-primary" type="button" onclick="downloadPDF()">
+      📄 ดาวน์โหลดเป็น PDF
+    </button>
+
+    <p class="hint">เสร็จแล้วให้อัปโหลดไฟล์ PDF ใน Microsoft Teams ตามที่อาจารย์กำหนด</p>
+  </section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+  function updatePreview() {
+    const fields = ["studentName","studentId","studentSec","topicTitle","q1","q2","q3","q4"];
+    for (let f of fields) {
+      const el = document.getElementById(f);
+      if (!el.value || !el.value.trim()) {
+        const errorBox = document.getElementById("errorBox");
+        errorBox.style.display = "block";
+        errorBox.textContent = "กรอกข้อมูลให้ครบทุกช่อง และเลือกหัวข้อก่อนอัปเดตตัวอย่างเอกสารนะ 🙂";
+        return;
+      }
+    }
+
+    document.getElementById("errorBox").style.display = "none";
+
+    document.getElementById("outName").textContent  = document.getElementById("studentName").value;
+    document.getElementById("outId").textContent    = document.getElementById("studentId").value;
+    document.getElementById("outSec").textContent   = document.getElementById("studentSec").value;
+    document.getElementById("outTopic").textContent = document.getElementById("topicTitle").value;
+    document.getElementById("outQ1").textContent    = document.getElementById("q1").value;
+    document.getElementById("outQ2").textContent    = document.getElementById("q2").value;
+    document.getElementById("outQ3").textContent    = document.getElementById("q3").value;
+    document.getElementById("outQ4").textContent    = document.getElementById("q4").value;
+  }
+
+  function downloadPDF() {
+    const outName = document.getElementById("outName").textContent;
+    if (outName === "-" || outName === "") {
+      const errorBox = document.getElementById("errorBox");
+      errorBox.style.display = "block";
+      errorBox.textContent = "กดปุ่ม 'อัปเดตตัวอย่างเอกสารด้านล่าง' ก่อนดาวน์โหลด PDF นะ 🙂";
+      return;
+    }
+
+    const id = document.getElementById("studentId").value || "no_id";
+    const { jsPDF } = window.jspdf;
+    const exportArea = document.getElementById("exportArea");
+
+    html2canvas(exportArea, { scale: 2 }).then(canvas => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "pt", "a4");
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const margin = 20;
+      const imgWidth = pageWidth - margin * 2;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+
+      pdf.addImage(imgData, "PNG", margin, margin, imgWidth, imgHeight);
+      pdf.save("MSC112_W2_STS_" + id + ".pdf");
+    });
+  }
+</script>
+
+</body>
+</html>
