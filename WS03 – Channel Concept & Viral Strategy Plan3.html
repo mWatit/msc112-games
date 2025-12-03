@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>WS03 – Channel Concept & Viral Strategy Plan</title>
+
+  <!-- html2canvas CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 24px;
+      background: #f5f7fb;
+      color: #222;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 24px 28px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      border: 1px solid #dde3f0;
+    }
+    h1 {
+      color: #113b83;
+      border-bottom: 2px solid #113b83;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    h2 {
+      color: #1b3f70;
+      margin-top: 24px;
+    }
+    label {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 6px 8px;
+      margin-top: 4px;
+      border-radius: 6px;
+      border: 1px solid #c7cfe3;
+      font-size: 0.9rem;
+      box-sizing: border-box;
+    }
+    textarea { min-height: 70px; resize: vertical; }
+    .section-box {
+      border: 1px solid #dde3f0;
+      background: #f9fbff;
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 8px;
+    }
+    .row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .col {
+      flex: 1 1 260px;
+    }
+    .hint {
+      font-size: 0.78rem;
+      color: #777;
+      margin-top: 3px;
+    }
+    #downloadBtn {
+      display: inline-block;
+      background: #113b83;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 16px;
+    }
+    #downloadBtn:hover {
+      background: #0d2f6b;
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- Save Button -->
+  <button id="downloadBtn">📸 Save as Image (PNG)</button>
+
+  <!-- FORM CONTENT -->
+  <div class="container" id="captureArea">
+
+    <h1>WS03 – Channel Concept & Viral Strategy Plan</h1>
+
+    <div class="row">
+      <div class="col">
+        <label>ชื่อ–นามสกุล นักศึกษา</label>
+        <input type="text" placeholder="เช่น นายสมชาย ตัวอย่าง" />
+      </div>
+      <div class="col">
+        <label>รหัสนักศึกษา</label>
+        <input type="text" placeholder="2413410000" />
+      </div>
+      <div class="col">
+        <label>Section</label>
+        <input type="text" placeholder="Sec 01" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label>แพลตฟอร์มที่ใช้</label>
+        <select>
+          <option>TikTok</option>
+          <option>YouTube Shorts</option>
+          <option>Instagram Reels</option>
+        </select>
+      </div>
+      <div class="col">
+        <label>ชื่อ Channel ใหม่</label>
+        <input type="text" placeholder="ตั้งชื่อช่องใหม่ของคุณ" />
+      </div>
+    </div>
+
+    <h2>1. Theme ของช่อง</h2>
+    <div class="section-box">
+      <textarea placeholder="ช่องนี้เกี่ยวกับอะไร? เช่น ชีวิตเด็กมหาลัย, ทำอาหารง่าย ๆ, ฟิตเนสสำหรับมือใหม่"></textarea>
+    </div>
+
+    <h2>2. Target Audience</h2>
+    <div class="section-box row">
+      <div class="col">
+        <label>กลุ่มเป้าหมายหลัก</label>
+        <textarea placeholder="เช่น เด็กมหาลัย ปี 1–2 ..."></textarea>
+      </div>
+      <div class="col">
+        <label>Pain Points</label>
+        <textarea placeholder="ปัญหาที่ช่องจะช่วยแก้ให้ผู้ชม"></textarea>
+      </div>
+    </div>
+
+    <h2>3. Content Pillars (3 แบบขึ้นไป)</h2>
+    <div class="section-box">
+      <textarea placeholder="- How-to&#10;- Storytelling&#10;- Review&#10;- Lifestyle ฯลฯ"></textarea>
+    </div>
+
+    <h2>4. Video Format</h2>
+    <div class="section-box">
+      <textarea placeholder="POV, Talking Head, Reaction, Meme, Mini Tutorial ..."></textarea>
+    </div>
+
+    <h2>5. Hook Strategy (ดึงคนดู 1–2 วิแรก)</h2>
+    <div class="section-box">
+      <textarea placeholder="เปิดด้วยคำถามแรง ๆ, ฉากสะดุดตา, Problem statement ฯลฯ"></textarea>
+    </div>
+
+    <h2>6. Posting Plan</h2>
+    <div class="section-box row">
+      <div class="col">
+        <label>จำนวนคลิปต่อสัปดาห์</label>
+        <input type="text" placeholder="เช่น 3 คลิป/สัปดาห์" />
+      </div>
+      <div class="col">
+        <label>เวลาโพสต์</label>
+        <input type="text" placeholder="เช่น 18.00–21.00 น." />
+      </div>
+    </div>
+
+    <h2>7. Benchmark Channels</h2>
+    <div class="section-box">
+      <textarea placeholder="- ช่องตัวอย่างที่อยากทำตาม (ใส่ลิงก์)"> </textarea>
+    </div>
+
+    <h2>8. Keyword & Hashtag Strategy</h2>
+    <div class="section-box row">
+      <div class="col">
+        <label>Keywords</label>
+        <textarea placeholder="study tips, easy cooking, student life ..."></textarea>
+      </div>
+      <div class="col">
+        <label>Target Hashtags</label>
+        <textarea placeholder="#studentlife #easyrecipe ฯลฯ"></textarea>
+      </div>
+    </div>
+    <label>Generic Hashtags</label>
+    <textarea placeholder="#fyp #viral #shorts #reels ฯลฯ" style="width:100%;"></textarea>
+
+    <p class="hint">หมายเหตุ: สัปดาห์หน้า ส่ง Report คลิปแรก 1 คลิป + Analytics</p>
+  </div>
+
+  <!-- SCRIPT: Save to Image -->
+  <script>
+    document.getElementById("downloadBtn").addEventListener("click", () => {
+      const captureArea = document.getElementById("captureArea");
+
+      html2canvas(captureArea, { scale: 2 }).then(canvas => {
+        const link = document.createElement("a");
+        link.download = "WS03_Submission.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      });
+    });
+  </script>
+
+</body>
+</html>
